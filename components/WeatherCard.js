@@ -1,20 +1,32 @@
-import React from "react";
-import sunny from "../assets/Sunny.svg"
+import React from 'react';
 
+import cloudy from '../assets/Cloudy.svg';
+import partlyCloudy from '../assets/PartlyCloudy.svg';
+import rainy from '../assets/Rainy.svg';
+import snowy from '../assets/Snowy.svg';
+import sunny from '../assets/Sunny.svg';
 
-function WeatherCard() {
-  return (
-    <div className = "card">
-        <div className = "img-container">
-            <img className="card-img-top" src = {sunny} alt="Card image cap" id = "icon"/>
-        </div>
-        <div class="card-body">
-            <h3 className="card-title">CITY DATA HERE</h3>
-            <h5 className="card-text">TEMPERATURE DATA HERE</h5>
-            <h5 className="card-text">FORECAST DATA HERE</h5>
-        </div>
-    </div>
-  );
+const forecastImg = {
+	'Cloudy': cloudy,
+	'Partly cloudy': partlyCloudy,
+	'Rainy': rainy,
+	'Snowy': snowy,
+	'Sunny': sunny
 };
 
-// Export the WeatherCard
+function WeatherCard({ city }) {
+	return (
+		<div className="card">
+			<div className="img-container">
+				<img className="card-img-top" src={forecastImg[city.forecast]} alt={city.forecast} id="icon"/>
+			</div>
+			<div class="card-body">
+				<h3 className="card-title">{city.city}</h3>
+				<h5 className="card-text">{city.temperature}</h5>
+				<h5 className="card-text">{city.forecast}</h5>
+			</div>
+		</div>
+	);
+};
+	
+export default WeatherCard;
